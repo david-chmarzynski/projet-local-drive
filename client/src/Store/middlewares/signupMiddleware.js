@@ -12,7 +12,7 @@ const signupMiddleware = (store) => (next) => (action) => {
           email: store.getState().Signup.email,
           password: store.getState().Signup.password,
           isShop: store.getState().Signup.isShop
-        },
+        }
       })
         .then((response) => {
           console.log(response);

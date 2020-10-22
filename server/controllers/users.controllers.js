@@ -1,5 +1,6 @@
 const User = require('../database/models/user.model');
 const { createUser, findUserById, findUserByEmail } = require('../queries/users.queries');
+const passport = require('passport');
 
 // SIGNUP NEW USER CONTROLLER
 exports.signup = async (req, res, next) => {
@@ -31,24 +32,24 @@ exports.signup = async (req, res, next) => {
   }
 };
 
-// SIGNIN CREATED USER CONTROLLER (WITHOUT PASSPORT)
-// exports.signin = async (req, res, next) => {
-//   const body = req.body;
-//   try {
-//     const user = await findUserByEmail(body.email);
-//     if(user) {
-//       const checkPasswords = await User.comparePasswords(body.password);
-//       if(checkPasswords) {
-//         req.login();
-//       } else {
-
-//       }
-//     } else {
-//       res.json({
-//         message: "L'email et/ou le mot de passe n'existe pas"
-//       });
-//     }
-//   } catch (error) {
-    
-//   }
-// };
+// SIGNIN CREATED USER CONTROLLER
+exports.signin = (req, res, next) => {
+  passport.authenticate('local', (error, user, info) => {
+    //console.log(user)
+    if (error) {
+      next();
+    } else if (!user) {
+      res.json({
+        error: info.message
+      })
+    } else {
+      req.login(user, (err) => {
+        if (err) {
+          next()
+        } else {
+          res.json({ message: "Connexion réussie", user: user})
+        }
+      })
+    }
+  })(req, res, next);
+};

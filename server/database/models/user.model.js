@@ -20,8 +20,8 @@ userSchema.statics.hashPassword = (password) => {
 };
 
 // COMPARE (GIVEN) PASSWORD WITH (DB) PASSWORD
-userSchema.methods.comparePasswords = (password) => {
-  return bcrypt.compare(password, this.password);
+userSchema.methods.comparePasswords = (password, userPassword) => {
+  return bcrypt.compare(password, userPassword);
 };
 
 const User = mongoose.model('users', userSchema);

@@ -24,6 +24,5 @@ export const useWindowSizes = (useState, useLayoutEffect) => {
   width = size[0];
   height = size[1];
   responsive = isResponsive;
-  console.log("width :", width, "height :", height, "isResponsive :", responsive);
   return { width, height, responsive};
 };

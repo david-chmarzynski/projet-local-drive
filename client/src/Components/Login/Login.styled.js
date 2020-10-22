@@ -156,7 +156,6 @@ export const StyledLoginButton = styled.button`
 `;
 
 export const StyledLoginForm = styled.form`
-  max-width: 100%;
   text-align: center;
 `;
 

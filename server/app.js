@@ -8,6 +8,10 @@ const index = require('./routes');
 
 const app = express();
 exports.app = app;
+
+// SESSION & PASSPORT AUTH
+require('./config/session.config');
+require('./config/passport.config');
 const port = process.env.PORT || 4000;
 
 app.use(morgan('short'));

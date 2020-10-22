@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 // IMPORT COMPONENT
 import Login from '../Components/Login/Login';
 
-// IMPORT SIGNUP ACTIONS & STATE
+// IMPORT SIGNUP ACTIONS
 import { changeEmail, changePassword, changePasswordVerify, changeIsShop, submitSignup } from '../Store/reducer/Signup';
+
+// IMPORT SIGNIN ACTIONS
+import { changeEmailSignin, changePasswordSignin, submitSignin } from '../Store/reducer/Signin';
 
 const mapStateToProps = (state) => ({
   // PROPS TO PASS (FROM REDUCER TO COMPONENT)
@@ -16,25 +19,39 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   // FUNCTIONS TO PASS (FROM REDUCER TO COMPONENT)
-  handleChangeStoreEmail: (email) => {
+  // SIGNUP REDUCER
+  handleChangeStoreEmailSignup: (email) => {
     dispatch(changeEmail(email));
   },
 
-  handleChangeStorePassword: (password) => {
+  handleChangeStorePasswordSignup: (password) => {
     dispatch(changePassword(password));
   },
 
-  handleChangeStorePasswordVerify: (passwordVerify) => {
+  handleChangeStorePasswordVerifySignup: (passwordVerify) => {
     dispatch(changePasswordVerify(passwordVerify));
   },
 
-  handleChangeStoreIsShop: () => {
+  handleChangeStoreIsShopSignup: () => {
     dispatch(changeIsShop());
   },
 
   handleStoreSubmitSignup: () => {
     dispatch(submitSignup());
   },
+
+  // SIGNIN FUNCTION
+  handleChangeStoreEmailSignin: (email) => {
+    dispatch(changeEmailSignin(email));
+  },
+
+  handleChangeStorePasswordSignin: (password) => {
+    dispatch(changePasswordSignin(password));
+  },
+
+  handleStoreSubmitSignin: () => {
+    dispatch(submitSignin());
+  }
 });
 
 // CONNECT COMPONENT/CONTAINER
