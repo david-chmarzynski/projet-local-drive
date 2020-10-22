@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Dialog from '@material-ui/core/Dialog';
 import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
 
 export const StyledLogin = styled.div`
 
@@ -74,7 +75,11 @@ export const StyledLoginTitle = styled.div`
   }
 
   a:nth-child(1) {
-    text-decoration: underline;
+    text-decoration: ${props => props.display === "signin" ? "underline" : "none"};
+  }
+
+  a:nth-child(2) {
+    text-decoration: ${props => props.display === "signup" ? "underline" : "none"};
   }
 
   @media (max-width: 768px) {
@@ -148,4 +153,30 @@ export const StyledLoginButton = styled.button`
   :focus {
     outline: white auto 1px;
   }
+`;
+
+export const StyledLoginForm = styled.form`
+  max-width: 100%;
+  text-align: center;
+`;
+
+export const StyledLoginCheckBox = styled.div`
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  .MuiCheckbox-root	{
+    color: white;
+  }
+
+  .MuiTooltip-popper {
+    margin-top: -2rem;
+  }
+`;
+
+export const StyledCheckBox = styled(Checkbox)`
+  
 `;

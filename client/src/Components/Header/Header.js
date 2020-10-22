@@ -20,9 +20,11 @@ import {
 } from './Header.styled';
 
 // IMPORT COMPONENTS
-import Login from '../Login/Login';
+import Login from '../../Containers/Login';
 
-const Header = ({ responsive }) => {
+const Header = ({
+  responsive // FROM APP
+}) => {
   // USE STATE
   const [isLoginOpen, setLoginOpen] = useState(false);
 
