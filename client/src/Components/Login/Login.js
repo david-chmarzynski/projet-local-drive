@@ -26,7 +26,7 @@ const Login = ({
   isLoginOpen, // FROM HEADER
   handleCloseLogin, // FROM HEADER
   responsive, // FROM APP & HEADER (USEWINDOWSIZES)
-  // STATE STORE IMPORT SIGNUP
+  // STATE STORE IMPORT
   isShop,
   // FUNCTIONS STORE IMPORT SIGNUP
   handleChangeStoreEmailSignup,

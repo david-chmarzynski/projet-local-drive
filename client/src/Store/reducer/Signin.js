@@ -3,18 +3,20 @@
 // INITIAL SIGNIN STATE
 const initialState = {
   email: null,
-  password: null
+  password: null,
+  isLogged: false
 };
 
 // ACTION TYPES
 const CHANGE_EMAIL = "CHANGE_EMAIL";
 const CHANGE_PASSWORD = "CHANGE_PASSWORD";
+const CHANGE_ISLOGGED = "CHANGE_ISLOGGED";
 
 // MIDDLEWARE ACTION TYPE
 export const SUBMIT_SIGNIN = "SUBMIT_SIGNIN";
 
 // REDUCER
-const reducer = (state = initialState, action = {}) => {
+const reducer = (state = initialState, action={}) => {
   switch(action.type) {
     // CASES
     case CHANGE_EMAIL:
@@ -26,6 +28,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         password: action.password
+      }
+    case CHANGE_ISLOGGED:
+      return {
+        ...state,
+        isLogged: action.isLogged
       }
     default:
       return state;
@@ -45,6 +52,11 @@ export const changePasswordSignin = (password) => ({
 
 export const submitSignin = () => ({
   type: SUBMIT_SIGNIN
+});
+
+export const changeIsLogged = (isLogged) => ({
+  type: CHANGE_ISLOGGED,
+  isLogged
 });
 
 // EXPORT DEFAULT

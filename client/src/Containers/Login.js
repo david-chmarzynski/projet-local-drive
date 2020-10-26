@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-// IMPORT COMPONENT
+// IMPORT ORIGINAL COMPONENT
 import Login from '../Components/Login/Login';
 
 // IMPORT SIGNUP ACTIONS
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
   email: state.Signup.email,
   password: state.Signup.password,
   passwordVerify: state.Signup.passwordVerify,
-  isShop: state.Signup.isShop
+  isShop: state.Signup.isShop,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,7 +5,6 @@ const passport = require('passport');
 // SIGNUP NEW USER CONTROLLER
 exports.signup = async (req, res, next) => {
   // DEBUG
-  console.log(req.body)
   const body = req.body;
   try {
     // LOOK FOR AN EXISTING USER IN DB
@@ -35,7 +34,6 @@ exports.signup = async (req, res, next) => {
 // SIGNIN CREATED USER CONTROLLER
 exports.signin = (req, res, next) => {
   passport.authenticate('local', (error, user, info) => {
-    //console.log(user)
     if (error) {
       next();
     } else if (!user) {
@@ -47,7 +45,7 @@ exports.signin = (req, res, next) => {
         if (err) {
           next()
         } else {
-          res.json({ message: "Connexion réussie", user: user})
+          res.json({ message: "Connexion réussie", user: user, isLogged: req.isAuthenticated()})
         }
       })
     }

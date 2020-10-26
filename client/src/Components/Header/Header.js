@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // IMPORT ASSETS
@@ -21,10 +21,14 @@ import {
 
 // IMPORT COMPONENTS
 import Login from '../../Containers/Login';
+import Menu from '../../Components/Menu/Menu';
 
 const Header = ({
-  responsive // FROM APP
+  responsive, // FROM APP
+  isLogged, // FROM STORE
+  isLoggedSession // FROM APP
 }) => {
+  console.log(isLoggedSession)
   // USE STATE
   const [isLoginOpen, setLoginOpen] = useState(false);
 
@@ -51,7 +55,11 @@ const Header = ({
         </StyledHeaderIconsLeft>
         <StyledHeaderIconsRight>
           <PersonIcon fontSize="large" onClick={handleOpenLogin}/>
+          {isLoggedSession ? (
+            "BONJOUR"
+          ) : (
             <Login isLoginOpen={isLoginOpen} handleCloseLogin={handleCloseLogin} responsive={responsive} />
+          )}
           <ShoppingBasketIcon fontSize="large" />
         </StyledHeaderIconsRight>  
       </StyledHeaderIcons>

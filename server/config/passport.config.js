@@ -2,8 +2,9 @@ const passport = require('passport');
 const { app } = require('../app');
 const User = require('../database/models/user.model');
 const LocalStrategy = require('passport-local').Strategy;
-const { findUserByEmail } = require('../queries/users.queries');
+const { findUserByEmail, findUserById } = require('../queries/users.queries');
 const util = require('util');
+const { response } = require('express');
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -14,9 +15,10 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser( async (id, done) => {
   try {
-    const user = await User.findUserById(id).exec();
+    const user = await findUserById(id);
     done(null, user);
   } catch (error) {
+    console.log(error)
     done(error, null);
   }
 });
