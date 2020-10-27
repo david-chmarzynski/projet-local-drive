@@ -51,3 +51,13 @@ exports.signin = (req, res, next) => {
     }
   })(req, res, next);
 };
+
+// SIGNOUT SIGNEDIN USER CONROLLER
+exports.signout = (req, res, next) => {
+  try {
+    req.logout();
+    res.json({ user: req.user, isLogged: req.isAuthenticated()});
+  } catch (error) {
+    console.log(error)
+  }
+};

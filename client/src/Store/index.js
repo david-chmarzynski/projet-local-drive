@@ -8,6 +8,7 @@ import {
 import signupMiddleware from './middlewares/signupMiddleware';
 import signinMiddleware from './middlewares/signinMiddleware';
 import appSigninMiddleware from './middlewares/appSigninMiddleware';
+import signoutMiddleware from './middlewares/signoutMiddleware';
 
 // IMPORT REDUCERS
 import reducer from './reducer';
@@ -19,7 +20,8 @@ const enhancers = composeEnhancers(
     // PLACE MIDDLEWARES TO USE HERE /!\ WARNING ON ORDER
     appSigninMiddleware,
     signupMiddleware,
-    signinMiddleware
+    signinMiddleware,
+    signoutMiddleware
   ),
 );
 

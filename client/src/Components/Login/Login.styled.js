@@ -102,7 +102,9 @@ export const StyledLoginImgDiv = styled.div`
 `;
 
 export const StyledLoginDialog = styled(Dialog)`
-
+  .MuiDialog-paperWidthSm {
+    width: 100%;
+  }
 `;
 
 export const StyledLoginInput = styled(TextField)`

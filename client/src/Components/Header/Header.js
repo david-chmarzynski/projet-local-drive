@@ -21,14 +21,12 @@ import {
 
 // IMPORT COMPONENTS
 import Login from '../../Containers/Login';
-import Menu from '../../Components/Menu/Menu';
+import Menu from '../../Containers/Menu';
 
 const Header = ({
   responsive, // FROM APP
   isLogged, // FROM STORE
-  isLoggedSession // FROM APP
 }) => {
-  console.log(isLoggedSession)
   // USE STATE
   const [isLoginOpen, setLoginOpen] = useState(false);
 
@@ -55,8 +53,8 @@ const Header = ({
         </StyledHeaderIconsLeft>
         <StyledHeaderIconsRight>
           <PersonIcon fontSize="large" onClick={handleOpenLogin}/>
-          {isLoggedSession ? (
-            "BONJOUR"
+          {isLogged ? (
+            <Menu isLoginOpen={isLoginOpen} handleCloseLogin={handleCloseLogin} responsive={responsive} />
           ) : (
             <Login isLoginOpen={isLoginOpen} handleCloseLogin={handleCloseLogin} responsive={responsive} />
           )}

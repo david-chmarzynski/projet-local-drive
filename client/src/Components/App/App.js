@@ -13,21 +13,22 @@ import Header from '../../Containers/Header';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
 
-const App = ({ isLoggedSession, checkSessionConnexion }) => {
-  console.log(isLoggedSession)
+const App = ({ isLogged, checkSessionConnexion }) => {
+  console.log(isLogged)
   // USING REFS
   const ref = useRef(null);
   // USEWINDOWSIZES VARIABLES
   let {width, height, responsive} = useWindowSizes(useState, useLayoutEffect);
 
   useEffect(() => {
+    // TRY TO CONNECT WITH SESSION
     checkSessionConnexion();
   }, []);
 
   return (
     <div className="App" ref={ref}>
       <Router>
-        <Header responsive={responsive} isLoggedSession={isLoggedSession}/>
+        <Header responsive={responsive} isLogged={isLogged}/>
         <Home />
         <Footer />
       </Router>

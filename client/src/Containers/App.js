@@ -6,7 +6,7 @@ import App from '../Components/App/App';
 import { storeCheckSessionConnexion } from '../Store/reducer/App';
 
 const mapStateToProps = (state) => ({
-  isLoggedSession: state.App.isLoggedSession
+  isLogged: state.Signin.isLogged
 });
 
 const mapDispatchToProps = (dispatch) => ({
