@@ -29,6 +29,10 @@ export const StyledMenu = styled.div`
     transition: background-color 5000s ease-in-out 0s;
   }
 
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
+
   img {
     height: 77px;
     width: 60px;
@@ -47,6 +51,12 @@ export const StyledDialogMenu = styled(Dialog)`
   .MuiDialog-paperWidthSm {
     width: 30%;
   }
+
+  @media (max-width: 1025px) {
+    .MuiDialog-paperWidthSm {
+      width: 100%;
+    }
+  }
 `;
 
 export const StyledMenuClosing = styled.div`
@@ -54,6 +64,7 @@ export const StyledMenuClosing = styled.div`
   width: 100%;
   flex-direction: row;
   justify-content: flex-end;
+
   button {
     color: white;
   }
@@ -71,15 +82,11 @@ export const StyledMenuTitle = styled.h2`
   padding-right: 1rem;
 
   @media (max-width: 768px) {
-    h2 {
-      font-size: 4vw;
-    }
+    font-size: 8vw;
   }
 
   @media (min-width: 766px) and (max-width: 1025px) {
-    h2 {
-      font-size: 3vw;
-    }
+    font-size: 5vw;
   }
 `;
 
