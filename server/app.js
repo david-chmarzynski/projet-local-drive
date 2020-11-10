@@ -3,7 +3,11 @@ const morgan = require('morgan');
 const errorHandler = require('errorhandler');
 const cors = require('cors');
 const path = require('path');
+const helmet = require('helmet');
+// DB CONNECT
 require('./database');
+
+// ROUTES IMPORT
 const index = require('./routes');
 
 const app = express();
@@ -18,6 +22,9 @@ app.use(morgan('short'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(helmet({
+  // contentSecurityPolicy: false,
+}));
 app.use(express.static(path.join(__dirname, '../build')));
 app.use(index);
 
