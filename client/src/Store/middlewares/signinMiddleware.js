@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SUBMIT_SIGNIN, changeIsLogged } from '../reducer/Signin';
+import { SUBMIT_SIGNIN, changeIsLogged, changeIsShop } from '../reducer/Signin';
 
 const signinMiddleware = (store) => (next) => (action) => {
   switch(action.type) {
@@ -14,8 +14,10 @@ const signinMiddleware = (store) => (next) => (action) => {
         }
       })
         .then((response) => {
+          // DEBUG
           console.log(response);
           store.dispatch(changeIsLogged(response.data.isLogged));
+          store.dispatch(changeIsShop(response.data.user.isShop));
         })
         .catch((error) => {
           console.log(error);

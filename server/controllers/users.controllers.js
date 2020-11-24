@@ -31,25 +31,56 @@ exports.signup = async (req, res, next) => {
   }
 };
 
-// SIGNIN CREATED USER CONTROLLER
-exports.signin = (req, res, next) => {
-  passport.authenticate('local', (error, user, info) => {
-    if (error) {
-      next();
-    } else if (!user) {
-      res.json({
-        error: info.message
-      })
+// SESSION SIGNIN CREATED USER CONTROLLER
+// exports.signin = (req, res, next) => {
+//   passport.authenticate('local', (error, user, info) => {
+//     if (error) {
+//       next();
+//     } else if (!user) {
+//       res.json({
+//         error: info.message
+//       })
+//     } else {
+//       req.login(user, (err) => {
+//         if (err) {
+//           next()
+//         } else {
+//           res.json({ message: "Connexion réussie", user: user, isLogged: req.isAuthenticated()})
+//         }
+//       })
+//     }
+//   })(req, res, next);
+// };
+
+// JWT SIGNIN CREATED USER CONRTOLLER
+exports.signin = async (req, res, next) => {
+  const { email, password } = req.body;
+  try {
+    const user = await findUserByEmail(email);
+    if(user) {
+      const match = await user.comparePasswords(password, user.password);
+      if(match) {
+        req.login(user);
+        // req.user = user;
+        console.log("isAuthenticated :", req.isAuthenticated())
+        res.status(200).cookie('panier', {}).json({
+          message: "Vous êtes connecté",
+          user: user,
+          isLogged: req.isAuthenticated()
+        });
+      } else {
+        res.status(403).json({
+          message : "Utilisateur ou mot de passe incorrect"
+        })
+      }
     } else {
-      req.login(user, (err) => {
-        if (err) {
-          next()
-        } else {
-          res.json({ message: "Connexion réussie", user: user, isLogged: req.isAuthenticated()})
-        }
+      res.status(403).json({
+        message: "Utilisateur ou mot de passe incorrect"
       })
     }
-  })(req, res, next);
+  } catch (error) {
+    next(error);
+  }
 };
 
 // SIGNOUT SIGNEDIN USER CONROLLER

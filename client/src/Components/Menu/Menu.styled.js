@@ -77,7 +77,7 @@ export const StyledMenuTitle = styled.h2`
   text-transform: uppercase;
   color: white;
   text-decoration: none;
-  font-size: 1.2vw;
+  font-size: 1.3vw;
   padding-left: 1rem;
   padding-right: 1rem;
 

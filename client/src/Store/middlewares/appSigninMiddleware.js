@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { CHECK_SESSION_CONNEXION } from '../reducer/App';
-import { changeIsLogged } from '../reducer/Signin';
+import { changeIsLogged, changeIsShop } from '../reducer/Signin';
 
 const appSigninMiddleware = (store) => (next) => (action) => {
   switch(action.type) {
@@ -11,8 +11,12 @@ const appSigninMiddleware = (store) => (next) => (action) => {
         url: "http://localhost:4000/users/me"
       })
         .then((response) => {
-          console.log(response);
+          // DEBUG
+          // console.log(response);
           store.dispatch(changeIsLogged(response.data.isLogged));
+          if (response.data.user) {
+            store.dispatch(changeIsShop(response.data.user.isShop));
+          }
       })
         .catch((error) => {
           console.log(error);

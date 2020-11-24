@@ -15,7 +15,8 @@ const signupMiddleware = (store) => (next) => (action) => {
         }
       })
         .then((response) => {
-          console.log(response);
+          // DEBUG
+          // console.log(response);
         })
         .catch((error) => {
           console.log(error);

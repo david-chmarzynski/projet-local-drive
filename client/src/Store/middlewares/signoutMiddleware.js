@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SUBMIT_LOGOUT } from '../reducer/Menu';
-import { changeIsLogged } from '../reducer/Signin';
+import { changeIsLogged, changeIsShop } from '../reducer/Signin';
 
 const signoutMiddleware = (store) => (next) => (action) => {
   switch(action.type) {
@@ -11,15 +11,17 @@ const signoutMiddleware = (store) => (next) => (action) => {
         url: "http://localhost:4000/users/signout"
       })
         .then((response) => {
-          console.log(response);
+          // DEBUG
+          // console.log(response);
           store.dispatch(changeIsLogged(response.data.isLogged));
+          store.dispatch(changeIsShop(null));
       })
         .catch((error) => {
           console.log(error)
       })
         .finally(() => {});
         break;
-        
+
     default:
       next(action);
   }

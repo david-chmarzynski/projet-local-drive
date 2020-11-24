@@ -1,9 +1,8 @@
 import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
 import './App.css';
-import axios from 'axios';
 
 // IMPORT REACT ROUTER
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 
 // IMPORT UTILS
 import { useWindowSizes } from './App.utils';
@@ -12,26 +11,26 @@ import { useWindowSizes } from './App.utils';
 import Header from '../../Containers/Header';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
+import AdminHome from '../Admin/AdminHome/AdminHome';
 
 const App = ({ isLogged, checkSessionConnexion }) => {
-  console.log(isLogged)
   // USING REFS
   const ref = useRef(null);
   // USEWINDOWSIZES VARIABLES
-  let {width, height, responsive} = useWindowSizes(useState, useLayoutEffect);
+  let {responsive} = useWindowSizes(useState, useLayoutEffect);
 
   useEffect(() => {
     // TRY TO CONNECT WITH SESSION
     checkSessionConnexion();
-  }, []);
+  }, [checkSessionConnexion]);
 
   return (
     <div className="App" ref={ref}>
-      <Router>
-        <Header responsive={responsive} isLogged={isLogged}/>
-        <Home />
+        <Header responsive={responsive}/>
+        <Switch>
+          <Route exact path="/" component={Home} />
+        </Switch>
         <Footer />
-      </Router>
     </div>
   );
 }

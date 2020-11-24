@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { app } = require('../app');
 
 app.use(session({
-  secret: "wildlocaldrive",
+  secret: "c9b560b1-035f-4248-bdf1-2780c690ccb6",
   resave: false,
   saveUninitialized: false,
   cookie: {

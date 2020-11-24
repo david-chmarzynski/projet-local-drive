@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 // IMPORT ASSETS
 import Logo from './g1114.png';
@@ -9,13 +8,21 @@ import CloseIcon from '@material-ui/icons/Close';
 import { IconButton } from '@material-ui/core';
 
 // IMPORT STYLED COMPONENTS
-import { StyledMenu, StyledDialogMenu, StyledMenuClosing, StyledMenuTitle, StyledMenuImgDiv, StyledMenuTiles } from './Menu.styled';
+import {
+  StyledMenu,
+  StyledDialogMenu,
+  StyledMenuClosing,
+  StyledMenuTitle,
+  StyledMenuImgDiv,
+  StyledMenuTiles
+} from './Menu.styled';
 
 const Menu = ({
   isLoginOpen,
   handleCloseLogin,
   responsive,
-  handleStoreSubmitLogout
+  handleStoreSubmitLogout,
+  isShop
 }) => {
   // LOGOUT FUNCTION
   const handleLogout = () => {
@@ -38,12 +45,31 @@ const Menu = ({
           </StyledMenuImgDiv>
           <h1>Local Drive</h1>
           <StyledMenuTiles>
-            <div className="menu-tile">
-              <h3>Mes commandes</h3>
-            </div>
-            <div className="menu-tile">
-              <h3>Mes informations</h3>
-            </div>
+            {/* USER MENU DISPLAY */}
+            {!isShop && (
+            <>
+              <div className="menu-tile">
+                <h3>Mes commandes</h3>
+              </div>
+              <div className="menu-tile">
+                <h3>Mes informations</h3>
+              </div>
+            </>
+            )}
+            {/* SHOP MENU DISPLAY */}
+            {isShop && (
+            <>
+              <div className="menu-tile">
+                <h3>Mon magasin</h3>
+              </div>
+              <div className="menu-tile">
+                <h3>Mes produits</h3>
+              </div>
+              <div className="menu-tile">
+                <h3>Mes promotions</h3>
+              </div>
+            </>
+            )}
             <div className="menu-tile logout" onClick={handleLogout}>
               <h3>Déconnexion</h3>
             </div>

@@ -10,10 +10,11 @@ export const StyledHome = styled.div`
 `;
 
 export const StyledHomeTitle = styled.div`
-  width: 50%;
+  width: 100%;
   margin: auto;
   padding-top: 5.3rem;
   text-align: center;
-  font-size: 6vw;
+  font-size: 12vw;
+  font-weight: 700;
   text-transform: uppercase;
 `;

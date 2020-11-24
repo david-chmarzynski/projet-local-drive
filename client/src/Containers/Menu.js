@@ -6,7 +6,8 @@ import Menu from '../Components/Menu/Menu';
 import { submitLogout } from '../Store/reducer/Menu';
 
 const mapStateToProps = (state) => ({
-  isLogged: state.Signin.isLogged
+  isLogged: state.Signin.isLogged,
+  isShop: state.Signin.isShop
 });
 
 const mapDispatchToProps = (dispatch) => ({
