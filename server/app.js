@@ -26,9 +26,6 @@ require('./config/session.config');
 // require('./config/passport.config');
 
 
-const port = process.env.PORT || 4000;
-
-
 app.use(morgan('short'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -39,17 +36,8 @@ app.use(helmet({
 app.use(express.static(path.join(__dirname, '../build')));
 app.use(index);
 
-if (process.env.NODE_ENV === 'development') {
-  app.use(errorHandler());
-}
-else {
-  app.use((err, req, res, next) => {
-    const code = err.code || 500;
-    res.status(code).json({
-      code: code,
-      message: code === 500 ? null : err.message
-    });
-  });
-}
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"))
+});
 
 module.exports = app;
