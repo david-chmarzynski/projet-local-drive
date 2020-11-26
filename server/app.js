@@ -4,8 +4,9 @@ const errorHandler = require('errorhandler');
 const cors = require('cors');
 const path = require('path');
 const helmet = require('helmet');
-// JWT
 const cookieParser = require('cookie-parser');
+const port = "3000";
+
 // DB CONNECT
 require('./database');
 
@@ -18,7 +19,7 @@ exports.app = app;
 // JWT
 app.use(cookieParser());
 
-// JWT AUTH
+// JWT AUTHENTICATION
 require('./config/jwt.config');
 
 // SESSION & PASSPORT AUTH
@@ -40,4 +41,5 @@ app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, "../build/index.html"))
 });
 
+app.listen(port)
 module.exports = app;
