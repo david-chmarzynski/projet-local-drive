@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SUBMIT_SIGNUP } from '../reducer/Signup';
 
 const signupMiddleware = (store) => (next) => (action) => {
-  const URL = window.location.href;
+  const URL = "http://local-drive.fr/";
   switch(action.type) {
     case SUBMIT_SIGNUP:
       axios({

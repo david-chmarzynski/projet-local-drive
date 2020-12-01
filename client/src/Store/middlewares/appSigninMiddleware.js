@@ -4,7 +4,7 @@ import { CHECK_SESSION_CONNEXION } from '../reducer/App';
 import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const appSigninMiddleware = (store) => (next) => (action) => {
-  const URL = window.location.href;
+  const URL = "http://local-drive.fr/";
   switch(action.type) {
     case CHECK_SESSION_CONNEXION:
       axios({
