@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // IMPORT ASSETS
 import Logo from './g1114.png';
@@ -60,18 +61,18 @@ const Menu = ({
             {isShop && (
             <>
               <div className="menu-tile">
-                <h3>Mon magasin</h3>
+                <Link to="/admin" onClick={handleCloseLogin}><h3>Mon magasin</h3></Link>
               </div>
               <div className="menu-tile">
-                <h3>Mes produits</h3>
+                <Link to="/admin" onClick={handleCloseLogin}><h3>Mes produits</h3></Link>
               </div>
               <div className="menu-tile">
-                <h3>Mes promotions</h3>
+                <Link to="/admin" onClick={handleCloseLogin}><h3>Mes promotions</h3></Link>
               </div>
             </>
             )}
             <div className="menu-tile logout" onClick={handleLogout}>
-              <h3>Déconnexion</h3>
+              <Link to="/" onClick={handleCloseLogin}><h3>Déconnexion</h3></Link>
             </div>
           </StyledMenuTiles>
       </StyledMenu>

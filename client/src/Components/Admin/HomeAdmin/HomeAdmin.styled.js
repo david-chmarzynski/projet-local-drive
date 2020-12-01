@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledAdminHome = styled.div`
+export const StyledHomeAdmin = styled.div`
   height: 92vh;
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
 `;

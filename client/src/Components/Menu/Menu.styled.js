@@ -110,7 +110,7 @@ export const StyledMenuTiles = styled.div`
     text-align: center;
   }
 
-  h3 {
+  a {
     width: 100%;
     text-transform: uppercase;
     color: white;

@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-const port = "3000";
+const port = '4000';
 
 // DB CONNECT
 require('./database');
@@ -41,5 +41,6 @@ app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, "../build/index.html"))
 });
 
-app.listen(port)
+app.listen(port);
+console.log("App listening on port ", port);
 module.exports = app;

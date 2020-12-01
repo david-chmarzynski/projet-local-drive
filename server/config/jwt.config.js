@@ -1,4 +1,4 @@
-const secret = '08627376-2664-4cc8-b742-efda1098ad21';
+const secret = '08627376-2664-4cc8-b742-efda1098ad22';
 const jwt = require('jsonwebtoken');
 const { app } = require('../app');
 const { findUserById } = require('../queries/users.queries');

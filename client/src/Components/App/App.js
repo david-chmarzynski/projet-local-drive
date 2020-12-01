@@ -11,16 +11,37 @@ import { useWindowSizes } from './App.utils';
 import Header from '../../Containers/Header';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
-import AdminHome from '../Admin/AdminHome/AdminHome';
 
-const App = ({ isLogged, checkSessionConnexion }) => {
+// IMPORT ADMIN COMPONENTS
+import HomeAdmin from '../Admin/HomeAdmin/HomeAdmin';
+import AdminNav from '../Admin/AdminNav/AdminNav';
+import ProductManager from '../Admin/ProductManager/ProductManager';
+
+const App = ({ isLogged, user, isShop, checkSessionConnexion }) => {
   // USING REFS
   const ref = useRef(null);
   // USEWINDOWSIZES VARIABLES
   let {responsive} = useWindowSizes(useState, useLayoutEffect);
 
+  // ENSURE USER IS SHOP
+  const secureRoutes = (user, isLogged, isShop) => {
+    if(user && isLogged && isShop) {
+      return (
+        <>
+          <Route path="/admin" component={AdminNav} />
+          <Route exact path="/admin" component={HomeAdmin} />
+          <Route exact path="/admin/produits/" component={ProductManager} />
+          <Route exact path="/admin/boutique" />
+          {/* <Route exact path="/admin/add/produit" component={ProductAdd} /> */}
+          <Route exact path="/admin/informations" />
+        </>
+      )
+    }
+  };
+
   useEffect(() => {
-    // TRY TO CONNECT WITH SESSION
+  // TRY TO CONNECT WITH SESSION
+  // DISABLED BECAUSE OF JWT AUTH
     checkSessionConnexion();
   }, [checkSessionConnexion]);
 
@@ -29,6 +50,7 @@ const App = ({ isLogged, checkSessionConnexion }) => {
         <Header responsive={responsive}/>
         <Switch>
           <Route exact path="/" component={Home} />
+          {secureRoutes(user, isLogged, isShop)}
         </Switch>
         <Footer />
     </div>

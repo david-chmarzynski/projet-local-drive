@@ -5,7 +5,8 @@ const initialState = {
   email: null,
   password: null,
   isLogged: false,
-  isShop: null
+  isShop: null,
+  user: null
 };
 
 // ACTION TYPES
@@ -13,6 +14,7 @@ const CHANGE_EMAIL = "CHANGE_EMAIL";
 const CHANGE_PASSWORD = "CHANGE_PASSWORD";
 const CHANGE_ISLOGGED = "CHANGE_ISLOGGED";
 const CHANGE_ISSHOP = "CHANGE_ISSHOP";
+const CHANGE_USER = "CHANGE_USER";
 
 // MIDDLEWARE ACTION TYPE
 export const SUBMIT_SIGNIN = "SUBMIT_SIGNIN";
@@ -40,6 +42,11 @@ const reducer = (state = initialState, action={}) => {
       return {
         ...state,
         isShop: action.isShop
+      }
+    case CHANGE_USER:
+      return {
+        ...state,
+        user: action.user
       }
     default:
       return state;
@@ -69,6 +76,11 @@ export const changeIsLogged = (isLogged) => ({
 export const changeIsShop = (isShop) => ({
   type: CHANGE_ISSHOP,
   isShop
+});
+
+export const changeUser = (user) => ({
+  type: CHANGE_USER,
+  user
 });
 
 // EXPORT DEFAULT

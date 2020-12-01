@@ -1,4 +1,3 @@
-  
 export const useWindowSizes = (useState, useLayoutEffect) => {
   const [size, setSize] = useState([0, 0]);
   const [isResponsive, setResponsive] = useState(false);

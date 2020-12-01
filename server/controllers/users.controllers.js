@@ -1,6 +1,4 @@
-const User = require('../database/models/user.model');
 const { createUser, findUserById, findUserByEmail } = require('../queries/users.queries');
-const passport = require('passport');
 
 // SIGNUP NEW USER CONTROLLER
 exports.signup = async (req, res, next) => {
@@ -13,8 +11,7 @@ exports.signup = async (req, res, next) => {
     // CASE USER EXIST
     if(existingUser) {
       return res.status(400).json({
-        message: "Cet utilisateur existe déjà",
-        user: existingUser
+        message: "Cet utilisateur existe déjà"
       });
     }
     // CASE USER DOES NOT EXIST
