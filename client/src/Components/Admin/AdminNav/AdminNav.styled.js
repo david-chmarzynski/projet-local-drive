@@ -5,7 +5,6 @@ export const StyledAdminNav = styled.div`
     
     width: 15%;
     min-height: 92vh;
-    position: relative;
 
     /* svg {
       width: 100%;

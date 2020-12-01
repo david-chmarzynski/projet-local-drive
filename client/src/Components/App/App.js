@@ -16,6 +16,7 @@ import Footer from '../Footer/Footer';
 import HomeAdmin from '../Admin/HomeAdmin/HomeAdmin';
 import AdminNav from '../Admin/AdminNav/AdminNav';
 import ProductManager from '../Admin/ProductManager/ProductManager';
+import ProductAdd from '../Admin/ProductAdd/ProductAdd';
 
 const App = ({ isLogged, user, isShop, checkSessionConnexion }) => {
   // USING REFS
@@ -27,14 +28,15 @@ const App = ({ isLogged, user, isShop, checkSessionConnexion }) => {
   const secureRoutes = (user, isLogged, isShop) => {
     if(user && isLogged && isShop) {
       return (
-        <>
+        <div id="admin">
           <Route path="/admin" component={AdminNav} />
           <Route exact path="/admin" component={HomeAdmin} />
           <Route exact path="/admin/produits/" component={ProductManager} />
+          <Route exact path="/admin/produits/add" component={ProductAdd} />
           <Route exact path="/admin/boutique" />
           {/* <Route exact path="/admin/add/produit" component={ProductAdd} /> */}
           <Route exact path="/admin/informations" />
-        </>
+        </div>
       )
     }
   };

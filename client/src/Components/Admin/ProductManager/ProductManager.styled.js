@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const StyledProductManager = styled.div`
   height: auto;
   width: 80%;
-  position: absolute;
-  left: 18%;
-  top: 12vh;
+  margin: 2vh auto;
   display: flex;
   flex-wrap: wrap;
 `;
