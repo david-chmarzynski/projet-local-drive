@@ -4,11 +4,12 @@ import { SUBMIT_LOGOUT } from '../reducer/Menu';
 import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const signoutMiddleware = (store) => (next) => (action) => {
+  const URL = window.location.href;
   switch(action.type) {
     case SUBMIT_LOGOUT:
       axios({
         method: "GET",
-        url: "http://localhost:4000/users/signout"
+        url: `${URL}users/signout`
       })
         .then((response) => {
           // DEBUG
