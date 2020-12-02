@@ -16,7 +16,7 @@ const ProductManager = ({ fetchStoreProducts, products }) => {
 
   return (
     <StyledProductManager>
-      {products !== null && products !== String && products.map(product => (
+      {products && products.map(product => (
         <ProductCard product={product} />
       ))}
     </StyledProductManager>
