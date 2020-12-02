@@ -7,14 +7,16 @@ import { StyledProductManager } from './ProductManager.styled';
 import ProductCard from '../ProductCard/ProductCard';
 
 const ProductManager = ({ fetchStoreProducts, products }) => {
-
   useEffect(() => {
-    fetchStoreProducts()
+    fetchStoreProducts();
+    console.log(products)
   },[]);
+
+  
 
   return (
     <StyledProductManager>
-      {products !== null && products.map(product => (
+      {products !== null && products !== String && products.map(product => (
         <ProductCard product={product} />
       ))}
     </StyledProductManager>
