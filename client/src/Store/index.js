@@ -9,6 +9,8 @@ import signupMiddleware from './middlewares/signupMiddleware';
 import signinMiddleware from './middlewares/signinMiddleware';
 import appSigninMiddleware from './middlewares/appSigninMiddleware';
 import signoutMiddleware from './middlewares/signoutMiddleware';
+import createProductMiddleware from './middlewares/createProductMiddleware';
+import getProductsMiddleware from './middlewares/getProductsMiddleware';
 
 // IMPORT REDUCERS
 import reducer from './reducer';
@@ -21,7 +23,9 @@ const enhancers = composeEnhancers(
     appSigninMiddleware,
     signupMiddleware,
     signinMiddleware,
-    signoutMiddleware
+    signoutMiddleware,
+    createProductMiddleware,
+    getProductsMiddleware
   ),
 );
 

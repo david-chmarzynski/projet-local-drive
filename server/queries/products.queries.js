@@ -2,7 +2,7 @@ const Product = require('../database/models/product.model');
 
 exports.createProduct = async (body, user) => {
   // DEBUG
-  console.log("body :", body, "user :", user);
+  // console.log("body :", body);
   try {
     const newProduct = new Product({
       name: body.name,
@@ -19,4 +19,8 @@ exports.createProduct = async (body, user) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+exports.getProductsFromShop = async (user) => {
+  return Product.find({ shop_id: user._id }).exec();
 };

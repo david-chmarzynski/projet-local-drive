@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
 const AdminNav = () => {
   // ICON CLICK STATE
   const [open, setOpen] = useState(false);
-  console.log(open);
   // ICON CLICK TOGGLE
   const handleToggle = () => {
     setOpen(!open);

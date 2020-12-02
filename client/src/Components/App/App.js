@@ -15,8 +15,8 @@ import Footer from '../Footer/Footer';
 // IMPORT ADMIN COMPONENTS
 import HomeAdmin from '../Admin/HomeAdmin/HomeAdmin';
 import AdminNav from '../Admin/AdminNav/AdminNav';
-import ProductManager from '../Admin/ProductManager/ProductManager';
-import ProductAdd from '../Admin/ProductAdd/ProductAdd';
+import ProductManager from '../../Containers/ProductManager';
+import ProductAdd from '../../Containers/ProductAdd';
 
 const App = ({ isLogged, user, isShop, checkSessionConnexion }) => {
   // USING REFS

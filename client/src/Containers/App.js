@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   checkSessionConnexion: () => {
     dispatch(storeCheckSessionConnexion())
-  }
+  },
 });
 
 // CONNECT COMPONENT/CONTAINER
