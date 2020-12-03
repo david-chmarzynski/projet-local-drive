@@ -24,10 +24,16 @@ exports.getProducts = async (req, res, next) => {
   const user = req.user._id || req.body.user;
   try {
     const productsList = await getProductsFromShop(user);
-    res.status(200).json({
-      message: "Produits récupérés avec succès",
-      products: productsList
-    })
+    if (productsList) {
+      res.json({
+        message: "Produits récupérés avec succès",
+        products: productsList
+      });
+    } else {
+      res.json({
+        message: "Un problème est survenu"
+      });
+    }
   } catch (error) {
     console.log(error);
   }
