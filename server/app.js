@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-const port = '4000';
+const port = '80';
 
 // DB CONNECT
 require('./database');
