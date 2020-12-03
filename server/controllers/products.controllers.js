@@ -37,6 +37,8 @@ exports.getProducts = async (req, res, next) => {
     }
 
   } catch (error) {
-    console.log(error);
+    res.json({
+      errors: error
+    })
   }
 };
