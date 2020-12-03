@@ -15,7 +15,9 @@ const getProductsMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // DEBUG
           console.log(response);
-          store.dispatch(changeProducts(response.data));
+          if (response.data.products) {
+            store.dispatch(changeProducts(response.data.products));
+          }
         })
         .catch((error) => {
           console.log(error);
