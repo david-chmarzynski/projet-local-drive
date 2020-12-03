@@ -20,8 +20,8 @@ exports.create = async (req, res, next) => {
 // GET PRODUCTS FROM A SHOP
 exports.getProducts = async (req, res, next) => {
   // DEBUG
-  console.log("req.user :", req.user);
-  const user = req.user;
+  // console.log("req.user :", req.user);
+  const user = req.user || req.body.user;
   try {
     const products = await getProductsFromShop(user);
     res.status(200).json({

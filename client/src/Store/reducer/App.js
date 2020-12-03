@@ -4,7 +4,7 @@
 const initialState = {};
 
 // ACTIONS TYPES
-export const CHECK_SESSION_CONNEXION = "CHECK_SESSION_CONNEXION";
+export const CHECK_USER = "CHECK_USER";
 
 // REDUCER
 const reducer = (state = initialState, action={}) => {
@@ -15,8 +15,8 @@ const reducer = (state = initialState, action={}) => {
 };
 
 // ACTION CREATOR
-export const storeCheckSessionConnexion = () => ({
-  type: CHECK_SESSION_CONNEXION
+export const storeCheckUser = () => ({
+  type: CHECK_USER
 });
 
 export default reducer;

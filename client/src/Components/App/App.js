@@ -18,15 +18,15 @@ import AdminNav from '../Admin/AdminNav/AdminNav';
 import ProductManager from '../../Containers/ProductManager';
 import ProductAdd from '../../Containers/ProductAdd';
 
-const App = ({ isLogged, user, isShop, checkSessionConnexion }) => {
+const App = ({ isLogged, isShop, checkUser }) => {
   // USING REFS
   const ref = useRef(null);
   // USEWINDOWSIZES VARIABLES
   let {responsive} = useWindowSizes(useState, useLayoutEffect);
 
   // ENSURE USER IS SHOP
-  const secureRoutes = (user, isLogged, isShop) => {
-    if(user && isLogged && isShop) {
+  const secureRoutes = (isLogged, isShop) => {
+    if(isLogged && isShop) {
       return (
         <div id="admin">
           <Route path="/admin" component={AdminNav} />
@@ -44,15 +44,15 @@ const App = ({ isLogged, user, isShop, checkSessionConnexion }) => {
   useEffect(() => {
   // TRY TO CONNECT WITH SESSION
   // DISABLED BECAUSE OF JWT AUTH
-    checkSessionConnexion();
-  }, [checkSessionConnexion]);
+    checkUser();
+  }, [checkUser]);
 
   return (
     <div className="App" ref={ref}>
         <Header responsive={responsive}/>
         <Switch>
           <Route exact path="/" component={Home} />
-          {secureRoutes(user, isLogged, isShop)}
+          {secureRoutes(isLogged, isShop)}
         </Switch>
         <Footer />
     </div>

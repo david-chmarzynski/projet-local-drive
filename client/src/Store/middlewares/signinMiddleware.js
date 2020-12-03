@@ -22,7 +22,6 @@ const signinMiddleware = (store) => (next) => (action) => {
           store.dispatch(changeIsLogged(response.data.isLogged));
           store.dispatch(changeIsShop(response.data.user.isShop));
           store.dispatch(changeUser(response.data.user._id));
-          store.dispatch(storeCheckSessionConnexion())
         })
         .catch((error) => {
           console.log(error);

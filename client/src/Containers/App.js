@@ -3,17 +3,16 @@ import { connect } from 'react-redux';
 // IMPORT ORIGINAL COMPONENT
 import App from '../Components/App/App';
 
-import { storeCheckSessionConnexion } from '../Store/reducer/App';
+import { storeCheckUser } from '../Store/reducer/App';
 
 const mapStateToProps = (state) => ({
   isLogged: state.Signin.isLogged,
-  user: state.Signin.user,
   isShop: state.Signin.isShop
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  checkSessionConnexion: () => {
-    dispatch(storeCheckSessionConnexion())
+  checkUser: () => {
+    dispatch(storeCheckUser())
   },
 });
 

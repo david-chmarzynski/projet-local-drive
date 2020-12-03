@@ -7,7 +7,7 @@ import {
 // IMPORT MIDDLEWARES
 import signupMiddleware from './middlewares/signupMiddleware';
 import signinMiddleware from './middlewares/signinMiddleware';
-import appSigninMiddleware from './middlewares/appSigninMiddleware';
+import checkUserMiddleware from './middlewares/checkUserMiddleware';
 import signoutMiddleware from './middlewares/signoutMiddleware';
 import createProductMiddleware from './middlewares/createProductMiddleware';
 import getProductsMiddleware from './middlewares/getProductsMiddleware';
@@ -20,7 +20,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancers = composeEnhancers(
   applyMiddleware(
     // PLACE MIDDLEWARES TO USE HERE /!\ WARNING ON ORDER
-    appSigninMiddleware,
+    checkUserMiddleware,
     signupMiddleware,
     signinMiddleware,
     signoutMiddleware,

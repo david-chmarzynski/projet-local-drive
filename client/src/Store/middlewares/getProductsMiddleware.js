@@ -8,8 +8,9 @@ const getProductsMiddleware = (store) => (next) => (action) => {
   switch(action.type) {
     case FETCH_PRODUCTS:
       axios({
-        method: "GET",
+        method: "POST",
         url: `${PROD}products/get`,
+        user: store.getState().Signin.user
       })
         .then((response) => {
           // DEBUG
