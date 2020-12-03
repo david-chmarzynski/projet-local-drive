@@ -36,7 +36,7 @@ const extractUserFromToken = async (req, res, next) => {
       decodedToken = checkExpirationToken(decodedToken, res);
       const user = await findUserById(decodedToken.sub);
       if(user) {
-        req.user = user;
+        req.login(user);
         next();
       } else {
         res.clearCookie('jwt');
