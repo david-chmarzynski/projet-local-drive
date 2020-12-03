@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 import { SUBMIT_SIGNIN, changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
+import { storeCheckSessionConnexion } from '../reducer/App';
 
 const signinMiddleware = (store) => (next) => (action) => {
   const PROD = "http://local-drive.fr/";
-  const DEV = "http://localhost:4000/"
+  const DEV = "http://localhost:80/"
   switch(action.type) {
     case SUBMIT_SIGNIN:
       axios({
@@ -21,6 +22,7 @@ const signinMiddleware = (store) => (next) => (action) => {
           store.dispatch(changeIsLogged(response.data.isLogged));
           store.dispatch(changeIsShop(response.data.user.isShop));
           store.dispatch(changeUser(response.data.user._id));
+          store.dispatch(storeCheckSessionConnexion())
         })
         .catch((error) => {
           console.log(error);

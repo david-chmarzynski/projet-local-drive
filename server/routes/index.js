@@ -9,4 +9,15 @@ router.use('/users', users);
 // PRODUCTS ROUTES
 router.use('/products', products);
 
+// HOME PAGE
+// router.use('/', (req, res) => {
+//   const user = req.user;
+//   console.log(user);
+//   if (user) {
+//     res.json({
+//       message: "Utilisateur connecté"
+//     })
+//   }
+// })
+
 module.exports = router;

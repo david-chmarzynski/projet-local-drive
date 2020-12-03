@@ -5,7 +5,7 @@ import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const signoutMiddleware = (store) => (next) => (action) => {
   const PROD = "http://local-drive.fr/";
-  const DEV = "http://localhost:4000/"
+  const DEV = "http://localhost:80/"
   switch(action.type) {
     case SUBMIT_LOGOUT:
       axios({

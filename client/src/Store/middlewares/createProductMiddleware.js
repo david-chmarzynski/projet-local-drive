@@ -4,7 +4,7 @@ import { fetchProducts, SUBMIT_PRODUCT } from '../reducer/Products';
 
 const createProductMiddleware = (store) => (next) => (action) => {
   const PROD = "http://local-drive.fr/";
-  const DEV = "http://localhost:4000/"
+  const DEV = "http://localhost:80/"
   switch(action.type) {
     case SUBMIT_PRODUCT:
       console.log(store.getState().Signin.user)

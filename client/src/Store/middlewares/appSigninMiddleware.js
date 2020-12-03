@@ -5,7 +5,7 @@ import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const appSigninMiddleware = (store) => (next) => (action) => {
   const PROD = "http://local-drive.fr/";
-  const DEV = "http://localhost:4000/"
+  const DEV = "http://localhost:80/"
   switch(action.type) {
     case CHECK_SESSION_CONNEXION:
       axios({
@@ -14,11 +14,11 @@ const appSigninMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           // DEBUG
-          // console.log(response);
+          console.log(response);
           store.dispatch(changeIsLogged(response.data.isLogged));
           if (response.data.user) {
-            store.dispatch(changeIsShop(response.data.user.isShop));
-            store.dispatch(changeUser(response.data.user._id));
+            store.dispatch(changeIsShop(response.data.isShop));
+            store.dispatch(changeUser(response.data.user));
           }
       })
         .catch((error) => {

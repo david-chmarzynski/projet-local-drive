@@ -6,7 +6,9 @@ router.post('/signin', signin);
 router.get('/signout', signout);
 router.get('/me', (req, res) => {
   res.json({
-    message: "Utilisateur connecté"
+    isLogged: req.isAuthenticated(),
+    isShop: req.user.isShop,
+    user: req.user
   })
 });
 

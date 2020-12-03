@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, '../build')));
 app.use(index);
 
 app.use('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"))
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 app.listen(port);
