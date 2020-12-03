@@ -21,16 +21,21 @@ exports.create = async (req, res, next) => {
 exports.getProducts = async (req, res, next) => {
   // DEBUG
   // console.log("req.user :", req.user);
-  const user = req.user._id || req.body.user;
+  const user = req.body.user;
   try {
-    const productsList = await getProductsFromShop(user);
-    if (productsList) {
-      return productsList;
+    const products = await getProductsFromShop(user);
+    if (products) {
+      res.status(200).json({
+        message: "Produits récupérés avec succès",
+        products: products
+      });
     } else {
-      res.status(400).json({
-        message: "Un problème est survenu"
+      res.status(200).json({
+        message: "Il n'y a aucun produit",
+        products: []
       });
     }
+
   } catch (error) {
     console.log(error);
   }
