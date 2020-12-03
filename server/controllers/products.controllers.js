@@ -23,10 +23,10 @@ exports.getProducts = async (req, res, next) => {
   // console.log("req.user :", req.user);
   const user = req.user._id || req.body.user;
   try {
-    const products = await getProductsFromShop(user);
+    const productsList = await getProductsFromShop(user);
     res.status(200).json({
       message: "Produits récupérés avec succès",
-      products: products
+      products: productsList
     })
   } catch (error) {
     console.log(error);
