@@ -4,9 +4,9 @@ const products = require('../routes/products.routes');
 const path = require('path');
 
 // USERS ROUTES
-router.use('/api/users', users);
+router.use('/users', users);
 
 // PRODUCTS ROUTES
-router.use('/api/products', products);
+router.use('/products', products);
 
 module.exports = router;

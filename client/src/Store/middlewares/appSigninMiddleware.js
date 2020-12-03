@@ -4,12 +4,12 @@ import { CHECK_SESSION_CONNEXION } from '../reducer/App';
 import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const appSigninMiddleware = (store) => (next) => (action) => {
-  const URL = "http://local-drive.fr/";
+  const URL = window.location.href;
   switch(action.type) {
     case CHECK_SESSION_CONNEXION:
       axios({
         method: "GET",
-        url: 'http://local-drive.fr/api/users/me'
+        url: `${URL}/users/me`
       })
         .then((response) => {
           // DEBUG

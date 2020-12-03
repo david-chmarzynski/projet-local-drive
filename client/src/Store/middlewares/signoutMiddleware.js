@@ -9,7 +9,7 @@ const signoutMiddleware = (store) => (next) => (action) => {
     case SUBMIT_LOGOUT:
       axios({
         method: "GET",
-        url: 'http://local-drive.fr/api/users/signout'
+        url: 'http://local-drive.fr/users/signout'
       })
         .then((response) => {
           // DEBUG
