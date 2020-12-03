@@ -21,11 +21,12 @@ const enhancers = composeEnhancers(
   applyMiddleware(
     // PLACE MIDDLEWARES TO USE HERE /!\ WARNING ON ORDER
     checkUserMiddleware,
+    getProductsMiddleware,
     signupMiddleware,
     signinMiddleware,
     signoutMiddleware,
-    createProductMiddleware,
-    getProductsMiddleware
+    createProductMiddleware
+
   ),
 );
 

@@ -21,16 +21,16 @@ exports.create = async (req, res, next) => {
 exports.getProducts = async (req, res, next) => {
   // DEBUG
   // console.log("req.user :", req.user);
-  const user = "5fc5234118f96206e0bb72ce";
+  const user = req.user._id || req.body.user;
   try {
     const productsList = await getProductsFromShop(user);
     if (productsList) {
-      res.json({
+      res.status(200).json({
         message: "Produits récupérés avec succès",
         products: productsList
       });
     } else {
-      res.json({
+      res.status(400).json({
         message: "Un problème est survenu"
       });
     }
