@@ -75,13 +75,13 @@ const AdminNav = () => {
       <MenuIcon onClick={handleToggle}  className={open ? classes.deployedIcon : classes.undeployedIcon } />
       {open && (
         <>
-         <Link to="/admin/produits"><Accordion className={classes.first}>
+          <Accordion className={classes.first}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel-products"
             id="panel-products"
           >
-           <Typography className={classes.heading}>Produits</Typography>
+           <Link to="/admin/produits"><Typography className={classes.heading}>Produits</Typography></Link>
           </AccordionSummary>
           <AccordionDetails>
             <div className={classes.container}>
@@ -90,7 +90,7 @@ const AdminNav = () => {
               <Link to="/admin/produits/update" className={classes.links}><Button variant="contained" className={classes.buttons}>MODIFIER</Button></Link>
             </div>
           </AccordionDetails>
-        </Accordion></Link>
+        </Accordion>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
