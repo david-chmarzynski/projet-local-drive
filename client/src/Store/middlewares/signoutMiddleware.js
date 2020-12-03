@@ -4,12 +4,13 @@ import { SUBMIT_LOGOUT } from '../reducer/Menu';
 import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const signoutMiddleware = (store) => (next) => (action) => {
-  const URL = "http://local-drive.fr/";
+  const PROD = "http://local-drive.fr/";
+  const DEV = "http://localhost:4000/"
   switch(action.type) {
     case SUBMIT_LOGOUT:
       axios({
         method: "GET",
-        url: 'http://local-drive.fr/users/signout'
+        url: `${PROD}users/signout`
       })
         .then((response) => {
           // DEBUG

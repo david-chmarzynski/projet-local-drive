@@ -3,12 +3,13 @@ import axios from 'axios';
 import { changeProducts, FETCH_PRODUCTS } from '../reducer/Products';
 
 const getProductsMiddleware = (store) => (next) => (action) => {
-  const URL = "http://local-drive.fr/";
+  const PROD = "http://local-drive.fr/";
+  const DEV = "http://localhost:4000/"
   switch(action.type) {
     case FETCH_PRODUCTS:
       axios({
         method: "POST",
-        url: 'http://local-drive.fr/products/get',
+        url: `${PROD}products/get`,
       })
         .then((response) => {
           // DEBUG

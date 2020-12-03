@@ -3,12 +3,13 @@ import axios from 'axios';
 import { SUBMIT_SIGNUP } from '../reducer/Signup';
 
 const signupMiddleware = (store) => (next) => (action) => {
-  const URL = "http://local-drive.fr/";
+  const PROD = "http://local-drive.fr/";
+  const DEV = "http://localhost:4000/"
   switch(action.type) {
     case SUBMIT_SIGNUP:
       axios({
         method: "POST",
-        url: 'http://local-drive.fr/users/signup',
+        url: `${PROD}users/signup`,
         data: {
           email: store.getState().Signup.email,
           password: store.getState().Signup.password,

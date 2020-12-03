@@ -3,7 +3,7 @@ const { createProduct, getProductsFromShop } = require('../queries/products.quer
 // CREATE A NEW PRODUCT
 exports.create = async (req, res, next) => {
   // DEBUG
-  console.log("req.user :", req.user);
+  // console.log("req.user :", req.user);
   const body = req.body;
   const user = req.user;
   try {
@@ -20,14 +20,21 @@ exports.create = async (req, res, next) => {
 // GET PRODUCTS FROM A SHOP
 exports.getProducts = async (req, res, next) => {
   // DEBUG
-  console.log(req.user);
+  console.log("req.user :", req.user);
   const user = req.user;
   try {
-    const products = await getProductsFromShop(user);
-    res.status(200).json({
-      message: "Produits récupérés avec succès",
-      products: products
-    })
+    if (user) {
+      const products = await getProductsFromShop(user);
+      res.status(200).json({
+        message: "Produits récupérés avec succès",
+        products: products
+      })
+    } else {
+      res.status(403).json({
+        message: "Aucun utilisateur trouvé"
+      })
+    }
+
   } catch (error) {
     console.log(error);
   }

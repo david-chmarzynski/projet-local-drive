@@ -3,13 +3,14 @@ import axios from 'axios';
 import { fetchProducts, SUBMIT_PRODUCT } from '../reducer/Products';
 
 const createProductMiddleware = (store) => (next) => (action) => {
-  const URL = "http://local-drive.fr/";
+  const PROD = "http://local-drive.fr/";
+  const DEV = "http://localhost:4000/"
   switch(action.type) {
     case SUBMIT_PRODUCT:
       console.log(store.getState().Signin.user)
       axios({
         method: "POST",
-        url: 'http://local-drive.fr/products/add',
+        url: `${PROD}products/add`,
         data: {
           name: store.getState().Products.name,
           description: store.getState().Products.description,

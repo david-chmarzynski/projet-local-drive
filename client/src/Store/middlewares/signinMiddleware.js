@@ -3,12 +3,13 @@ import axios from 'axios';
 import { SUBMIT_SIGNIN, changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const signinMiddleware = (store) => (next) => (action) => {
-  const URL = "http://local-drive.fr/";
+  const PROD = "http://local-drive.fr/";
+  const DEV = "http://localhost:4000/"
   switch(action.type) {
     case SUBMIT_SIGNIN:
       axios({
         method: "POST",
-        url: 'http://local-drive.fr/users/signin',
+        url: `${PROD}users/signin`,
         data: {
           email: store.getState().Signin.email,
           password: store.getState().Signin.password
