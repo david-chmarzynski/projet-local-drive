@@ -9,7 +9,7 @@ import ProductCard from '../ProductCard/ProductCard';
 const ProductManager = ({ fetchStoreProducts, products }) => {
   useEffect(() => {
     fetchStoreProducts();
-  },[]);
+  }, [fetchStoreProducts]);
 
   console.log(products)
 
