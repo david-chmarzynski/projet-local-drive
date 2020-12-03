@@ -26,7 +26,7 @@ exports.getProducts = async (req, res, next) => {
     if (user) {
       const products = await getProductsFromShop(user);
       res.status(200).json({
-        message: "Produits récupérés avec succès",
+        message: `Produits récupérés avec succès, ${req.user}`,
         products: products
       })
     } else {
