@@ -7,9 +7,9 @@ import { StyledProductManager } from './ProductManager.styled';
 import ProductCard from '../ProductCard/ProductCard';
 
 const ProductManager = ({ fetchStoreProducts, products }) => {
-  useEffect(() => {
-    fetchStoreProducts();
-  }, [fetchStoreProducts]);
+  // useEffect(() => {
+  //   fetchStoreProducts();
+  // }, [fetchStoreProducts]);
 
   console.log(products)
 
