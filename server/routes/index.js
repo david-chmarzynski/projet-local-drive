@@ -7,7 +7,7 @@ const path = require('path');
 router.use('/users', users);
 
 // PRODUCTS ROUTES
-router.use('/products', products);
+router.use('/api/products', products);
 
 // HOME PAGE
 // router.use('/', (req, res) => {
