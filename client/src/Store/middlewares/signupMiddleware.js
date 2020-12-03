@@ -8,7 +8,7 @@ const signupMiddleware = (store) => (next) => (action) => {
     case SUBMIT_SIGNUP:
       axios({
         method: "POST",
-        url: `${URL}api/users/signup`,
+        url: 'http://local-drive.fr/api/users/signup',
         data: {
           email: store.getState().Signup.email,
           password: store.getState().Signup.password,

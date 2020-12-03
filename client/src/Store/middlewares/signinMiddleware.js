@@ -8,7 +8,7 @@ const signinMiddleware = (store) => (next) => (action) => {
     case SUBMIT_SIGNIN:
       axios({
         method: "POST",
-        url: `${URL}api/users/signin`,
+        url: 'http://local-drive.fr/api/users/signin',
         data: {
           email: store.getState().Signin.email,
           password: store.getState().Signin.password
