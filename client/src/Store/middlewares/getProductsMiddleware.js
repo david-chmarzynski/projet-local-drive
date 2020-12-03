@@ -8,7 +8,7 @@ const getProductsMiddleware = (store) => (next) => (action) => {
     case FETCH_PRODUCTS:
       axios({
         method: "POST",
-        url: 'http://local-drive.fr/products',
+        url: 'http://local-drive.fr/products/get',
       })
         .then((response) => {
           // DEBUG
