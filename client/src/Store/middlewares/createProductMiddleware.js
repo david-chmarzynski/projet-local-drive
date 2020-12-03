@@ -9,7 +9,7 @@ const createProductMiddleware = (store) => (next) => (action) => {
       console.log(store.getState().Signin.user)
       axios({
         method: "POST",
-        url: `${URL}products/add`,
+        url: `${URL}api/products/add`,
         data: {
           name: store.getState().Products.name,
           description: store.getState().Products.description,

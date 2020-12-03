@@ -9,7 +9,7 @@ const appSigninMiddleware = (store) => (next) => (action) => {
     case CHECK_SESSION_CONNEXION:
       axios({
         method: "GET",
-        url: `${URL}users/me`
+        url: `${URL}api/users/me`
       })
         .then((response) => {
           // DEBUG

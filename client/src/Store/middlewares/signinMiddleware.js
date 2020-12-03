@@ -8,7 +8,7 @@ const signinMiddleware = (store) => (next) => (action) => {
     case SUBMIT_SIGNIN:
       axios({
         method: "POST",
-        url: `${URL}users/signin`,
+        url: `${URL}api/users/signin`,
         data: {
           email: store.getState().Signin.email,
           password: store.getState().Signin.password
@@ -16,7 +16,7 @@ const signinMiddleware = (store) => (next) => (action) => {
       })
         .then((response) => {
           // DEBUG
-          console.log(response);
+          console.log(response.data);
           store.dispatch(changeIsLogged(response.data.isLogged));
           store.dispatch(changeIsShop(response.data.user.isShop));
           store.dispatch(changeUser(response.data.user._id));
