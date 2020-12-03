@@ -9,7 +9,7 @@ const initialState = {
   image: null,
   category: null,
   unit: null,
-  products: [],
+  products: null,
 };
 
 // ACTIONS TYPES

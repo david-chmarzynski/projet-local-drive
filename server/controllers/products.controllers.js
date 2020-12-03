@@ -24,6 +24,7 @@ exports.getProducts = async (req, res, next) => {
   const user = req.user._id || req.body.user;
   try {
     const products = await getProductsFromShop(user);
+    console.log(products)
     res.status(200).json({
       message: "Produits récupérés avec succès",
       products: products
