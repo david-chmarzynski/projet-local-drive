@@ -21,6 +21,6 @@ exports.createProduct = async (body, user) => {
   }
 };
 
-exports.getProductsFromShop = async (user) => {
-  return await Product.find({ shop_id: user }).exec();
+exports.getProductsFromShop = (user) => {
+  return Product.find({ shop_id: user }).exec();
 };
