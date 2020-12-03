@@ -25,9 +25,7 @@ exports.getProducts = async (req, res, next) => {
   try {
     const productsList = await getProductsFromShop(user);
     if (productsList) {
-      res.status(200).send({
-        products: productsList
-      })
+      return productsList;
     } else {
       res.status(400).json({
         message: "Un problème est survenu"
