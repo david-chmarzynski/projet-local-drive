@@ -55,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%"
   },
   links: {
-    textDecoration: "none",
     width: "100%"
   }
 }));

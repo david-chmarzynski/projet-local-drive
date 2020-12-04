@@ -6,20 +6,18 @@ export const StyledAdminNav = styled.div`
     width: 15%;
     min-height: 92vh;
 
-    /* svg {
+    @media (max-width: 1024px) {
       width: 100%;
-      margin: auto;
-      margin-top: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    svg {
       cursor: pointer;
-
-      .deployed {
-        animation: deployRotateIcon .5s forwards;
-      }
-
-      .undeployed {
-        animation: undeployRotateIcon .5s forwards;  
-      }
-    } */
+      margin-top: 1rem;
+    }
 
     .undeployed {
         animation: undeployAdminMenu .5s;
