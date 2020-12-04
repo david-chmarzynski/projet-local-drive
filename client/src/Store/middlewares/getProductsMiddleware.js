@@ -10,7 +10,7 @@ const getProductsMiddleware = (store) => (next) => (action) => {
       axios({
         method: "POST",
         url: `${PROD}api/products/list`,
-        user: store.getState().Signin.user
+        user: "5fc5234118f96206e0bb72ce"
       })
         .then((response) => {
           // DEBUG
