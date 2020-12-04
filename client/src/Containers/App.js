@@ -4,21 +4,16 @@ import { connect } from 'react-redux';
 import App from '../Components/App/App';
 
 import { storeCheckUser } from '../Store/reducer/App';
-import { fetchProducts } from '../Store/reducer/Products';
 
 const mapStateToProps = (state) => ({
   isLogged: state.Signin.isLogged,
-  isShop: state.Signin.isShop,
-  products: state.Products.products
+  isShop: state.Signin.isShop
 });
 
 const mapDispatchToProps = (dispatch) => ({
   checkUser: () => {
     dispatch(storeCheckUser())
   },
-  fetchStoreProducts: () => {
-    dispatch(fetchProducts());
-  }
 });
 
 // CONNECT COMPONENT/CONTAINER

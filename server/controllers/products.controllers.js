@@ -21,7 +21,7 @@ exports.create = async (req, res, next) => {
 exports.getProducts = async (req, res, next) => {
   // DEBUG
   // console.log("req.user :", req.user);
-  const user = req.body.user;
+  const user = req.user || req.body.user;
   try {
     const products = await getProductsFromShop(user);
     if (products) {

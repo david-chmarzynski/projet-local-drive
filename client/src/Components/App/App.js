@@ -18,7 +18,7 @@ import AdminNav from '../Admin/AdminNav/AdminNav';
 import ProductManager from '../../Containers/ProductManager';
 import ProductAdd from '../../Containers/ProductAdd';
 
-const App = ({ isLogged, isShop, checkUser, fetchStoreProducts }) => {
+const App = ({ isLogged, isShop, checkUser }) => {
   // USING REFS
   const ref = useRef(null);
   // USEWINDOWSIZES VARIABLES
@@ -45,8 +45,7 @@ const App = ({ isLogged, isShop, checkUser, fetchStoreProducts }) => {
   // TRY TO CONNECT WITH SESSION
   // DISABLED BECAUSE OF JWT AUTH
     checkUser();
-    fetchStoreProducts();
-  }, [checkUser, fetchStoreProducts]);
+  }, [checkUser]);
 
   return (
     <div className="App" ref={ref}>
