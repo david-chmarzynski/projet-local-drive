@@ -25,7 +25,6 @@ const signupMiddleware = (store) => (next) => (action) => {
         })
         .finally(() => {});
         break;
-
     default:
       next(action);
   }

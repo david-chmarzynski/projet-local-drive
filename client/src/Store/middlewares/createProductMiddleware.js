@@ -10,7 +10,7 @@ const createProductMiddleware = (store) => (next) => (action) => {
       console.log(store.getState().Signin.user)
       axios({
         method: "POST",
-        url: `${PROD}products/add`,
+        url: `${PROD}api/products/add`,
         data: {
           name: store.getState().Products.name,
           description: store.getState().Products.description,
@@ -25,7 +25,7 @@ const createProductMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // DEBUG
           console.log(response);
-          // store.dispatch(fetchProducts());
+          store.dispatch(fetchProducts());
         })
         .catch((error) => {
           console.log(error);
