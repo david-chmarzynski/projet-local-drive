@@ -52,7 +52,7 @@ const ProductCard = ({ product, deleteProduct, axiosCallDeleteProduct }) => {
     const productId = e.target.value;
     console.log(e.target);
     deleteProduct(productId);
-    // axiosCallDeleteProduct();
+    axiosCallDeleteProduct();
   };
 
   return (
