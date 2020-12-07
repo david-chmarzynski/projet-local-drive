@@ -48,9 +48,10 @@ const ProductCard = ({ product, deleteProduct }) => {
   };
 
   const handleDeleteProduct = (e) => {
-    e.preventDefault();
     const productId = e.target.value;
-    deleteProduct(productId);
+    if(productId) {
+      deleteProduct(productId);
+    }
   };
 
   return (
