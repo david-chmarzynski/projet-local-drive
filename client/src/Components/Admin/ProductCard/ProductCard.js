@@ -48,7 +48,9 @@ const ProductCard = ({ product, deleteProduct, axiosCallDeleteProduct }) => {
   };
 
   const handleDeleteProduct = (e) => {
+    e.preventDefault();
     const productId = e.target.value;
+    console.log(e.target);
     deleteProduct(productId);
     // axiosCallDeleteProduct();
   };
