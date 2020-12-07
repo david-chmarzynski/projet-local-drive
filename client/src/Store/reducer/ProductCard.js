@@ -1,7 +1,5 @@
 // PRODUCTCARD REDUCER
 
-import deleteProductMiddleware from "../middlewares/deleteProductMiddleware";
-
 // INITIAL PRODUCT CARD STATE
 const initialState = {
   productId: null
@@ -32,9 +30,7 @@ export const deleteProductAxios = () =>({
 export const storeDeleteProduct = (productId) => ({
   type: STORE_DELETE_PRODUCT,
   productId
-},
-deleteProductMiddleware()
-);
+});
 
 
 

@@ -5,7 +5,8 @@ import { DELETE_PRODUCT } from '../reducer/ProductCard';
 
 const deleteProductMiddleware = (store) => (next) => (action) => {
   const PROD = "http://local-drive.fr/";
-  const DEV = "http://localhost:80/"
+  const DEV = "http://localhost:80/";
+  console.log("action.productId :",action.productId);
   switch(action.type) {
     case DELETE_PRODUCT:
       axios({
