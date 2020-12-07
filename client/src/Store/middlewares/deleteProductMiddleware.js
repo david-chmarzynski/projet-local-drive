@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { AXIOS_DELETE_PRODUCT } from '../reducer/ProductCard';
+import { changeProducts } from '../reducer/Products';
 // import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const deleteProductMiddleware = (store) => (next) => (action) => {
@@ -15,6 +16,7 @@ const deleteProductMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           // DEBUG
           console.log(response);
+          store.dispatch(changeProducts(response.data.products));
       })
         .catch((error) => {
           console.log(error);

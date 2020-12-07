@@ -65,7 +65,7 @@ exports.deleteProduct = async (req, res, next) => {
       // ORIGINAL LIST & NEW LIST ARE THE SAME
         res.status(304).json({
           message: "Une erreur est survenue, le produit n'a pas été supprimé",
-          product: originalList
+          products: originalList
         });
       }
     // IF USER'S NOT LOGGED
