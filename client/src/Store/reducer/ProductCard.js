@@ -23,13 +23,13 @@ const reducer = (state = initialState, action={}) => {
 };
 
 // ACTION CREATOR
-export const axiosDeleteProduct = () => ({
-  type: AXIOS_DELETE_PRODUCT,
-});
-
 export const storeDeleteProduct = (productId) => ({
   type: DELETE_PRODUCT,
   productId
+});
+
+export const axiosDeleteProduct = () => ({
+  type: AXIOS_DELETE_PRODUCT,
 });
 
 export default reducer;

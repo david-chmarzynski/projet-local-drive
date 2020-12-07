@@ -10,7 +10,7 @@ const deleteProductMiddleware = (store) => (next) => (action) => {
     case AXIOS_DELETE_PRODUCT:
       axios({
         method: "DELETE",
-        url: `${PROD}api/products/delete/${action.productId}`,
+        url: `${PROD}api/products/delete/${store.getState().ProductCard.productId}`,
       })
         .then((response) => {
           // DEBUG
