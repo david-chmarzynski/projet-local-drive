@@ -49,9 +49,7 @@ const ProductCard = ({ product, deleteProduct }) => {
 
   const handleDeleteProduct = (e) => {
     const productId = e.target.value;
-    if(productId) {
-      deleteProduct(productId);
-    }
+    deleteProduct(productId);
   };
 
   return (

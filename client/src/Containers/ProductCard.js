@@ -10,7 +10,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteProduct: (productId) => {
-    dispatch(storeDeleteProduct(productId))
+    dispatch(storeDeleteProduct(productId));
+    dispatch(axiosDeleteProduct());
   },
 });
 
