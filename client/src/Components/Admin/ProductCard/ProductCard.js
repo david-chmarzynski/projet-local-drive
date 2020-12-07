@@ -82,12 +82,16 @@ const ProductCard = ({ product, deleteProduct, axiosCallDeleteProduct }) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="Supprimer" value={product._id} onClick={handleDeleteProduct}>
-          <DeleteIcon />
-        </IconButton>
+        <div value={product._id}>
+          <IconButton aria-label="Supprimer" onClick={handleDeleteProduct}>
+            <DeleteIcon />
+          </IconButton>
+        </div>
+        <div>
         <IconButton aria-label="Modifier">
           <UpdateIcon />
         </IconButton>
+        </div>
       </CardActions>
     </Card>
   );
