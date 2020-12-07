@@ -1,4 +1,4 @@
-const { createProduct, getProductsFromShop } = require('../queries/products.queries');
+const { createProduct, getProductsFromShop, deleteProductFromId } = require('../queries/products.queries');
 
 // CREATE A NEW PRODUCT
 exports.create = async (req, res, next) => {
