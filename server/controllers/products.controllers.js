@@ -48,6 +48,7 @@ exports.deleteProduct = async (req, res, next) => {
   console.log(req.body);
   const productId = req.body.productId;
   const user = req.user._id;
+  console.log(productId);
   try {
     // IF USER'S LOGGED
     if(user) {
