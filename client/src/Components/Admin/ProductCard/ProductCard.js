@@ -50,7 +50,7 @@ const ProductCard = ({ product, deleteProduct, axiosCallDeleteProduct }) => {
   const handleDeleteProduct = (e) => {
     const productId = e.target.value;
     deleteProduct(productId);
-    axiosCallDeleteProduct();
+    // axiosCallDeleteProduct();
   };
 
   return (
