@@ -27,9 +27,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "1rem"
   },
   deployed: {
-    width: "15%",
+    // width: "15%",
     animation: "deployAdminMenu .5s",
-    boxShadow: "8px 0px 5px -6px rgba(0,0,0,0.75)"
+    boxShadow: "8px 0px 5px -6px rgba(0,0,0,0.75)",
+    
   },
   undeployed: {
     animation: "undeployAdminMenu .5s"

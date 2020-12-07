@@ -39,12 +39,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, deleteProduct }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const handleDeleteProduct = (e) => {
+    e.preventDefault();
+    const productId = e.target.value;
+    deleteProduct(productId);
   };
 
   return (
@@ -74,7 +80,7 @@ const ProductCard = ({ product }) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="Supprimer">
+        <IconButton aria-label="Supprimer" value={product._id} onClick={handleDeleteProduct}>
           <DeleteIcon />
         </IconButton>
         <IconButton aria-label="Modifier">

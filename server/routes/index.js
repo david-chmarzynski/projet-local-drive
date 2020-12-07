@@ -9,15 +9,4 @@ router.use('/api/products', products);
 // USERS ROUTES
 router.use('/users', users);
 
-// HOME PAGE
-// router.use('/', (req, res) => {
-//   const user = req.user;
-//   console.log(user);
-//   if (user) {
-//     res.json({
-//       message: "Utilisateur connecté"
-//     })
-//   }
-// })
-
 module.exports = router;

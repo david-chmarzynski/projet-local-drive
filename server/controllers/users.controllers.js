@@ -56,20 +56,20 @@ exports.signin = async (req, res, next) => {
     const user = await findUserByEmail(email);
     if(user) {
       const match = await user.comparePasswords(password, user.password);
-      if(match) {
-        req.login(user);
-        // req.user = user;
-        console.log("isAuthenticated :", req.isAuthenticated())
-        res.status(200).cookie('panier', {}).json({
-          message: "Vous êtes connecté",
-          user: user,
-          isLogged: req.isAuthenticated()
-        });
-      } else {
-        res.status(403).json({
-          message : "Utilisateur ou mot de passe incorrect"
-        })
-      }
+        if(match) {
+          req.login(user);
+          // req.user = user;
+          console.log("isAuthenticated :", req.isAuthenticated())
+          res.status(200).cookie('panier', []).json({
+            message: "Vous êtes connecté",
+            user: user,
+            isLogged: req.isAuthenticated()
+          });
+        } else {
+          res.status(403).json({
+            message : "Utilisateur ou mot de passe incorrect"
+          })
+        }
     } else {
       res.status(403).json({
         message: "Utilisateur ou mot de passe incorrect"

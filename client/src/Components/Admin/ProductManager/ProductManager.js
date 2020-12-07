@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { StyledProductManager } from './ProductManager.styled';
 
 // IMPORT EXTERNAL COMPONENTS
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../../../Containers/ProductCard';
 
 const ProductManager = ({ fetchStoreProducts, products }) => {
   useEffect(() => {
