@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProductCard = ({ product, deleteProduct }) => {
+const ProductCard = ({ product, deleteProduct, axiosCallDeleteProduct }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -50,6 +50,7 @@ const ProductCard = ({ product, deleteProduct }) => {
   const handleDeleteProduct = (e) => {
     const productId = e.target.value;
     deleteProduct(productId);
+    axiosCallDeleteProduct();
   };
 
   return (

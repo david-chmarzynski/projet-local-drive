@@ -11,8 +11,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   deleteProduct: (productId) => {
     dispatch(storeDeleteProduct(productId));
-    dispatch(axiosDeleteProduct());
   },
+  axiosCallDeleteProduct: () => {
+    dispatch(axiosDeleteProduct());
+  }
 });
 
 // CONNECT COMPONENT/CONTAINER
