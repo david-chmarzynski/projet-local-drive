@@ -11,6 +11,7 @@ import { useWindowSizes } from './App.utils';
 import Header from '../../Containers/Header';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
+import Error from '../Error/Error';
 
 // IMPORT ADMIN COMPONENTS
 import HomeAdmin from '../Admin/HomeAdmin/HomeAdmin';
@@ -36,6 +37,12 @@ const App = ({ isLogged, isShop, checkUser }) => {
           <Route exact path="/admin/boutique" />
           {/* <Route exact path="/admin/add/produit" component={ProductAdd} /> */}
           <Route exact path="/admin/informations" />
+        </div>
+      )
+    } else {
+      return (
+        <div id="error">
+          <Error />
         </div>
       )
     }
