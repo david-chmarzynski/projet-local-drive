@@ -46,7 +46,7 @@ exports.getProducts = async (req, res, next) => {
 exports.deleteProduct = async (req, res, next) => {
   // DEBUG
   console.log(req.body);
-  const productId = req.body.productId;
+  const {productId} = req.params;
   const user = req.user._id;
   console.log(productId);
   try {

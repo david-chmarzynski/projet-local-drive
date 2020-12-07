@@ -3,7 +3,7 @@ const { create, getProducts, deleteProduct } = require('../controllers/products.
 
 router.post('/list', getProducts);
 router.post('/add', create);
-router.post('/delete', deleteProduct);
+router.delete('/delete/:productId', deleteProduct);
 
 
 module.exports = router;
