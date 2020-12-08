@@ -76,7 +76,7 @@ const ProductAdd = ({
   };
 
   const redirectAdmin = () => {
-    document.location.href="http://local-drive.fr/admin/produits"
+    // document.location.href="http://local-drive.fr/admin/produits"
   };
 
   const handleSubmitProduct = async (e) => {
