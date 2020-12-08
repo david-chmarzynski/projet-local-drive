@@ -1,6 +1,6 @@
 const { find } = require('../database/models/product.model');
 const { createNewProduct, getProductsFromShop, deleteProductFromId, findProductById } = require('../queries/products.queries');
-const { createProductSchema, deleteProductSchema } = require ('../database/validations/product.validation');
+const { createProductSchema, updateProductSchema } = require ('../database/validations/product.validation');
 
 // CREATE A NEW PRODUCT
 exports.createProduct = async (req, res, next) => {
@@ -91,12 +91,14 @@ exports.updateProduct = async (req, res, next) => {
   const body = req.body;
   const user = req.user;
   try {
+    // VALIDATE REQ BODY
+    const validate = await updateProductSchema(body)
     // USER'S LOGGED
     if(user) {
-      const product = await findProductById(body._id);
+      const product = await findProductById(validate._id);
       // PRODUCT FOUND
       if(product) {
-        const updatedProduct = await updateNewProduct(body);
+        const updatedProduct = await updateNewProduct(validate);
         const updatedList = await getProductsFromShop(user._id)
         res.status(200).json({
           message: "Produit modifié avec succès",

@@ -14,8 +14,15 @@ const createProductSchema = Joi.object({
   date_updated: Joi.date()
 });
 
-const deleteProductSchema = Joi.object({
-  productId: Joi.string().required()
+const updateProductSchema = Joi.object({
+  name: Joi.string(),
+  description: Joi.string(),
+  price: Joi.number(),
+  unit: Joi.number(),
+  stock: Joi.number(),
+  image: Joi.string(),
+  shop_id: Joi.string(),
+  category_id: Joi.number()
 });
 
-module.exports = { createProductSchema, deleteProductSchema };
+module.exports = { createProductSchema, updateProductSchema };
