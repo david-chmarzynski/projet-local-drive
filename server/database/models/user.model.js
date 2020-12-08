@@ -9,7 +9,7 @@ const userSchema = Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   isShop: { type: Boolean, required: true },
-  location_id: { type: Object, required: false },
+  location_id: { type: Schema.Types.ObjectId, required: false },
   date_created: { type: Date, required: true },
   date_updated: { type: Date, required: false }
 });
