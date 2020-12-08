@@ -7,6 +7,6 @@ const path = require('path');
 router.use('/api/products', products);
 
 // USERS ROUTES
-router.use('/users', users);
+router.use('/api/users', users);
 
 module.exports = router;

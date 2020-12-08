@@ -11,6 +11,7 @@
   "author": "David Chmarzynski",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcrypt": "^5.0.0",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",

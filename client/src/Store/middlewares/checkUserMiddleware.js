@@ -10,7 +10,7 @@ const checkUserMiddleware = (store) => (next) => (action) => {
     case CHECK_USER:
       axios({
         method: "GET",
-        url: `${PROD}users/me`
+        url: `${PROD}api/users/me`
       })
         .then((response) => {
           // DEBUG

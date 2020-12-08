@@ -1,7 +1,7 @@
 const Product = require('../database/models/product.model');
 
 // CREATE A NEW PRODUCT
-exports.createProduct = async (body, user) => {
+exports.createNewProduct = async (body, user) => {
   // DEBUG
   // console.log("body :", body);
   try {
@@ -22,10 +22,28 @@ exports.createProduct = async (body, user) => {
   }
 };
 
+// FIND AND UPDATE PRODUCT
+exports.updateNewProduct = (body) => {
+  return Product.findByIdAndUpdate(body._id, {
+    name: body.name,
+    description: body.description,
+    price: body.price,
+    unit: body.unit,
+    stock: body.stock,
+    image: body.image,
+    category_id: body.category_id,
+    date_updated: Date.now()
+  }).exec();
+};
+
 // FIND PRODUCT(S) WITH SHOP_ID
 exports.getProductsFromShop = (user) => {
   return Product.find({ shop_id: user }).exec();
 };
+
+exports.findProductById = (id) => {
+  return Product.findById(id).exec();
+}
 
 // FIND ONE PRODUCT BY ID AND DELETE
 exports.deleteProductFromId = (id) => {

@@ -1,13 +1,14 @@
-const { createProduct, getProductsFromShop, deleteProductFromId } = require('../queries/products.queries');
+const { find } = require('../database/models/product.model');
+const { createNewProduct, getProductsFromShop, deleteProductFromId, findProductById } = require('../queries/products.queries');
 
 // CREATE A NEW PRODUCT
-exports.create = async (req, res, next) => {
+exports.createProduct = async (req, res, next) => {
   // DEBUG
   // console.log("req.user :", req.user);
   const body = req.body;
   const user = req.user;
   try {
-    const newProduct = await createProduct(body, user);
+    const newProduct = await createNewProduct(body, user);
     res.status(200).json({
       message: "Nouveau produit ajouté",
       product: newProduct
@@ -56,13 +57,13 @@ exports.deleteProduct = async (req, res, next) => {
       await deleteProductFromId(productId);
       const newList = await getProductsFromShop(user);
       if (originalList.length > newList.length) {
-      // ORIGINAL LIST HAS MORE PRODUCTS THAN NEWLIST
+      // ORIGINAL LIST HAS MORE PRODUCTS THAN NEWLIST (MODIFIED)
         res.status(200).json({
           message: "Le produit a bien été supprimé",
           products: newList
         });
       } else {
-      // ORIGINAL LIST & NEW LIST ARE THE SAME
+      // ORIGINAL LIST & NEW LIST ARE THE SAME (NO MODIFICATION)
         res.status(304).json({
           message: "Une erreur est survenue, le produit n'a pas été supprimé",
           products: originalList
@@ -75,6 +76,42 @@ exports.deleteProduct = async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
+  }
+};
+
+exports.updateProduct = async (req, res, next) => {
+  const body = req.body;
+  const user = req.user;
+  try {
+    // USER'S LOGGED
+    if(user) {
+      const product = await findProductById(body._id);
+      // PRODUCT FOUND
+      if(product) {
+        const updatedProduct = await updateNewProduct(body);
+        const updatedList = await getProductsFromShop(user._id)
+        res.status(200).json({
+          message: "Produit modifié avec succès",
+          updatedProduct: updatedProduct,
+          products: updatedList
+        });
+      // PRODUCT NOT FOUND
+      } else {
+        res.status(403).json({
+          message: "Aucun produit n'a été trouvé. Veuillez modifier un produit existant"
+        });
+      }
+    // USER'S NOT LOGGED
+    } else {
+      res.status(403).json({
+        message: "Vous n'êtes pas autorisé à effectuer cette action, veuillez vous connecter"
+      });
+    }
+    
+  } catch (error) {
+    res.json({
+      erreurs: error
+    });
   }
 };

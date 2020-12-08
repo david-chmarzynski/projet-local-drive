@@ -35,7 +35,6 @@ const App = ({ isLogged, isShop, checkUser }) => {
           <Route exact path="/admin/produits/" component={ProductManager} />
           <Route exact path="/admin/produits/add" component={ProductAdd} />
           <Route exact path="/admin/boutique" />
-          {/* <Route exact path="/admin/add/produit" component={ProductAdd} /> */}
           <Route exact path="/admin/informations" />
         </div>
       )

@@ -1,12 +1,15 @@
 const { createUser, findUserById, findUserByEmail } = require('../queries/users.queries');
+const {signinSchema, signupSchema} = require('../database/validations/user.validation');
 
 // SIGNUP NEW USER CONTROLLER
 exports.signup = async (req, res, next) => {
   // DEBUG
   const body = req.body;
   try {
+    // VALIDATE REQUEST DATAS (JOI)
+    const validate = await signupSchema.validateAsync(body);
     // LOOK FOR AN EXISTING USER IN DB
-    const existingUser = await findUserByEmail(req.body.email);
+    const existingUser = await findUserByEmail(validate.email);
 
     // CASE USER EXIST
     if(existingUser) {
@@ -16,7 +19,7 @@ exports.signup = async (req, res, next) => {
     }
     // CASE USER DOES NOT EXIST
     else {
-      const newUser = await createUser(body);
+      const newUser = await createUser(validate);
       res.status(200).json({
         message: "Nouvel utilisateur créé",
         newUser: newUser
@@ -24,6 +27,7 @@ exports.signup = async (req, res, next) => {
     }
   }
   catch (error) {
+    if(error.isJoi === true) error.status = 422;
     res.json({ errors: [error.message] });
   }
 };
@@ -53,9 +57,10 @@ exports.signup = async (req, res, next) => {
 exports.signin = async (req, res, next) => {
   const { email, password } = req.body;
   try {
-    const user = await findUserByEmail(email);
+    const validate = await signinSchema.validateAsync({email, password})
+    const user = await findUserByEmail(validate.email);
     if(user) {
-      const match = await user.comparePasswords(password, user.password);
+      const match = await user.comparePasswords(validate.password, user.password);
         if(match) {
           req.login(user);
           // req.user = user;
@@ -76,6 +81,7 @@ exports.signin = async (req, res, next) => {
       })
     }
   } catch (error) {
+    if(error.isJoi === true) error.status = 422;
     next(error);
   }
 };

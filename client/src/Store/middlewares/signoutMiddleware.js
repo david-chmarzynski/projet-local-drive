@@ -10,7 +10,7 @@ const signoutMiddleware = (store) => (next) => (action) => {
     case SUBMIT_LOGOUT:
       axios({
         method: "GET",
-        url: `${PROD}users/signout`
+        url: `${PROD}api/users/signout`
       })
         .then((response) => {
           // DEBUG
