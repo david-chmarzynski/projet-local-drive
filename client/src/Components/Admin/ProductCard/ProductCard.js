@@ -53,7 +53,7 @@ const ProductCard = ({ product, deleteProduct, axiosCallDeleteProduct }) => {
     console.log(e.target);
     deleteProduct(productId);
     axiosCallDeleteProduct();
-    document.location.href="http://local-drive.fr/admin/produits";
+    // document.location.href="http://local-drive.fr/admin/produits";
   };
 
   return (
