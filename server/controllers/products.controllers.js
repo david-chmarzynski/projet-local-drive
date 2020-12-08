@@ -56,12 +56,10 @@ exports.deleteProduct = async (req, res, next) => {
   const {productId} = req.params;
   const user = req.user._id;
   try {
-    // VALIDATE BODY'S DATA
-    const validate = await deleteProductSchema.validateAsync(productId);
     // IF USER'S LOGGED
     if(user) {
       const originalList = await getProductsFromShop(user);
-      await deleteProductFromId(validate.productId);
+      await deleteProductFromId(productId);
       const newList = await getProductsFromShop(user);
       if (originalList.length > newList.length) {
       // ORIGINAL LIST HAS MORE PRODUCTS THAN NEWLIST (MODIFIED)
@@ -83,7 +81,6 @@ exports.deleteProduct = async (req, res, next) => {
       });
     }
   } catch (error) {
-    if(error.isJoi === true) error.status = 422;
     res.json({
       errors: error
     });
