@@ -9,7 +9,7 @@ const productSchema = Schema({
   unit: { type: Number , required: true },
   stock: { type: Number , required: true },
   image: { type: String , required: true},
-  shop_id: { type: String , required: true},
+  shop_id: { type: Schema.Types.ObjectId , required: true},
   category_id: { type: Number , required: true},
   date_created: { type: Date , required: true},
   date_updated: { type: Date , required: false}

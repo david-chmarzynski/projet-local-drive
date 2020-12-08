@@ -1,6 +1,6 @@
 const { find } = require('../database/models/product.model');
 const { createNewProduct, getProductsFromShop, deleteProductFromId, findProductById } = require('../queries/products.queries');
-
+const { createProductSchema, deleteProductSchema } = require ('../database/validations/product.validation');
 
 // CREATE A NEW PRODUCT
 exports.createProduct = async (req, res, next) => {
@@ -9,13 +9,18 @@ exports.createProduct = async (req, res, next) => {
   const body = req.body;
   const user = req.user;
   try {
-    const newProduct = await createNewProduct(body, user);
+    const validate = await createProductSchema.validateAsync(body);
+    console.log(validate);
+    const newProduct = await createNewProduct(validate, user);
     res.status(200).json({
       message: "Nouveau produit ajouté",
       product: newProduct
     })
   } catch (error) {
-    console.log(error);
+    if(error.isJoi === true) error.status = 422;
+    res.json({
+      errors: error
+    });
   }
 };
 
@@ -47,15 +52,16 @@ exports.getProducts = async (req, res, next) => {
 
 exports.deleteProduct = async (req, res, next) => {
   // DEBUG
-  console.log(req.body);
+  // console.log(req.params);
   const {productId} = req.params;
   const user = req.user._id;
-  console.log(productId);
   try {
+    // VALIDATE BODY'S DATA
+    const validate = await deleteProductSchema.validateAsync(productId);
     // IF USER'S LOGGED
     if(user) {
       const originalList = await getProductsFromShop(user);
-      await deleteProductFromId(productId);
+      await deleteProductFromId(validate.productId);
       const newList = await getProductsFromShop(user);
       if (originalList.length > newList.length) {
       // ORIGINAL LIST HAS MORE PRODUCTS THAN NEWLIST (MODIFIED)
@@ -77,7 +83,10 @@ exports.deleteProduct = async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    if(error.isJoi === true) error.status = 422;
+    res.json({
+      errors: error
+    });
   }
 };
 
