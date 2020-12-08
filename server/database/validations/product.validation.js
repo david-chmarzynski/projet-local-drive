@@ -15,7 +15,7 @@ const createProductSchema = Joi.object({
 });
 
 const deleteProductSchema = Joi.object({
-  productId: Joi.objectId().required()
+  productId: Joi.string().required()
 });
 
 module.exports = { createProductSchema, deleteProductSchema };
