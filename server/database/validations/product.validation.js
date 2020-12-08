@@ -8,7 +8,7 @@ const createProductSchema = Joi.object({
   unit: Joi.number().required(),
   stock: Joi.number().required(),
   image: Joi.string().required(),
-  shop_id: Joi.objectId().required(),
+  shop_id: Joi.string().required(),
   category_id: Joi.number().required(),
   date_created: Joi.date(),
   date_updated: Joi.date()
