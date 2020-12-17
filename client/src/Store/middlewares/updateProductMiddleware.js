@@ -10,7 +10,7 @@ const updateProductMiddleware = (store) => (next) => (action) => {
     case AXIOS_DELETE_PRODUCT:
       axios({
         method: "DELETE",
-        url: `${PROD}api/products/update`,
+        url: `${DEV}api/products/update`,
       })
         .then((response) => {
           // DEBUG

@@ -9,7 +9,7 @@ const getProductsMiddleware = (store) => (next) => (action) => {
     case FETCH_PRODUCTS:
       axios({
         method: "POST",
-        url: `${PROD}api/products/list`,
+        url: `${DEV}api/products/list`,
         user: store.getState().Signin.user
       })
         .then((response) => {

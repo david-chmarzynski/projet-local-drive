@@ -2,7 +2,6 @@ import axios from 'axios';
 
 import { AXIOS_DELETE_PRODUCT } from '../reducer/ProductCard';
 import { changeProducts } from '../reducer/Products';
-// import { changeIsLogged, changeIsShop, changeUser } from '../reducer/Signin';
 
 const deleteProductMiddleware = (store) => (next) => (action) => {
   const PROD = "http://local-drive.fr/";
@@ -11,7 +10,7 @@ const deleteProductMiddleware = (store) => (next) => (action) => {
     case AXIOS_DELETE_PRODUCT:
       axios({
         method: "DELETE",
-        url: `${PROD}api/products/delete/${store.getState().ProductCard.productId}`,
+        url: `${DEV}api/products/delete/${store.getState().ProductCard.productId}`,
       })
         .then((response) => {
           // DEBUG
@@ -23,7 +22,6 @@ const deleteProductMiddleware = (store) => (next) => (action) => {
       })
         .finally(() => {});
         break;
-
     default:
       next(action);
   }
